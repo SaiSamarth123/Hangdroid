@@ -27,22 +27,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:onClick="startSinglePlayerGame"
-            android:text="Single Player" />
+            android:onClick="animals"
+            android:text="Animals" />
 
         <Button
             android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:text="Multi Player" />
+            android:onClick="food"
+            android:text="Food" />
 
         <Button
             android:id="@+id/button4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:text="Score" />
+            android:onClick="sports"
+            android:text="Sports" />
 
     </LinearLayout>
 
