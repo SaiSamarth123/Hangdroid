@@ -25,10 +25,14 @@ public class MainActivity extends AppCompatActivity {
         Words words = new Words("bull,calf,cat,chicken,cow,donkey,duck," +
                 "goat,goose,hen,horse,lamb,pig,rooster," +
                 "sheep,turkey,snake,crab,lion,puma", 1);
-        String[] wordy = words.wordArray();
+        String wood = "bull,calf,cat,chicken,cow,donkey,duck," +
+                "goat,goose,hen,horse,lamb,pig,rooster," +
+                "sheep,turkey,snake,crab,lion,puma";
+
+        String[] wordy = wood.split(",");
         int thing = (int) (Math.random() * ((19 - 0) + 1)) + 0;
         String fin = wordy[thing];
-        //myIntent.putExtra("word",fin);
+        myIntent.putExtra("word",fin);
 
        // change(fin);
         startActivity(myIntent);
