@@ -12,15 +12,20 @@ import android.widget.TextView;
 import android.content.Intent;
 
 public class GameActivity extends AppCompatActivity {
-    Intent intent = getIntent();
-    private String gWord = intent.getExtras().getString("name");
-    //private String gWord = "tree";
+    //Intent intent = getIntent();
+    //private String gWord = intent.getExtras().getString("name");
+    private String gWord = "";
     private String hidden = "";
     int counter = 1;
+    private boolean victory = false;
+    private String[] goodLetters = {"a","b","c","d","e","f","g","h","i",
+            "j","k","l","m","n","o","p","q","r","s","t","u","v","w","y","x","z"};
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        Bundle p = getIntent().getExtras();
+        this.gWord = p.getString("word");
         TextView answer = (TextView) findViewById(R.id.textView6);
         for (int i = 0; i < gWord.length(); i++) {
             hidden += "-";
@@ -35,9 +40,24 @@ public class GameActivity extends AppCompatActivity {
         String letter = myEditText.getText().toString();
         letter = letter.toLowerCase();
         Log.d("", "The letter introduced is " + letter);
+
+        if (victory == true) {
+            return;
+        }
+        boolean ifGood = false;
+        for (int i = 0; i < goodLetters.length; i++) {
+            if (goodLetters[i].equals(letter)) {
+                goodLetters[i] = "%";
+                ifGood = true;
+            }
+        }
+        if (!ifGood) {
+            return;
+        }
         if (letter.length() == 1) {
             checkLetter(letter);
         }
+        myEditText.setText("");
         //TextView answer = (TextView) findViewById(R.id.textView6);
         //answer.setText(letter);
         //editTextLayer.setText("Q");
@@ -60,13 +80,17 @@ public class GameActivity extends AppCompatActivity {
         }
 
         hidden = fin;
+        if (hidden.equals(gWord)) {
+            this.victory = true;
+            hidden += ": WIN!";
+        }
         TextView answer = (TextView) findViewById(R.id.textView6);
         answer.setText(hidden);
         if (guessed == false) {
             letterFailed(letter);
         }
     }
-
+    /**
     public void show(int position, char letterGuessed) {
         int counter = 0;
         String fin = "";
@@ -84,7 +108,7 @@ public class GameActivity extends AppCompatActivity {
         //TextView textView = (TextView) layoutLetter.getChildAt(position);
         //textView.setText(Character.toString(letterGuessed));
     }
-
+     **/
     public void letterFailed(String fLetter) {
         TextView failed = (TextView) findViewById(R.id.textView);
         String s = failed.getText().toString();
@@ -107,7 +131,8 @@ public class GameActivity extends AppCompatActivity {
        } else if (counter == 7) {
            imageView.setImageResource(R.drawable.hang6);
            TextView answer = (TextView) findViewById(R.id.textView6);
-           answer.setText("LOSS!");
+           answer.setText(gWord+ ": LOSS!");
+           this.victory = true;
        }
 
     }

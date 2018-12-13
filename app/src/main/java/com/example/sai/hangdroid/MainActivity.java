@@ -32,7 +32,10 @@ public class MainActivity extends AppCompatActivity {
         String[] wordy = wood.split(",");
         int thing = (int) (Math.random() * ((19 - 0) + 1)) + 0;
         String fin = wordy[thing];
-        myIntent.putExtra("word",fin);
+        //String fin = "pineapple";
+        Bundle ez = new Bundle();
+        ez.putString("word", fin);
+        myIntent.putExtras(ez);
 
        // change(fin);
         startActivity(myIntent);

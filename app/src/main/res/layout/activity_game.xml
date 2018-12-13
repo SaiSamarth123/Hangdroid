@@ -88,7 +88,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="_"
-            android:textSize="@android:dimen/notification_large_icon_height" />
+            android:textSize="50dp" />
     </LinearLayout>
 
     <TextView
