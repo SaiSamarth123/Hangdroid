@@ -58,9 +58,7 @@ public class GameActivity extends AppCompatActivity {
             checkLetter(letter);
         }
         myEditText.setText("");
-        //TextView answer = (TextView) findViewById(R.id.textView6);
-        //answer.setText(letter);
-        //editTextLayer.setText("Q");
+
 
     }
 
